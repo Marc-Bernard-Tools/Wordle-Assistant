@@ -16,7 +16,7 @@ function myABAP() {
         } catch (e) {
             console.log("An error was thrown: " + e.toString());
         }
-        
+
         const output = abap.console.get();
         console.log(output);
         return output.toString();
