@@ -25,6 +25,6 @@ function myABAP() {
     }
 }
 
-function runABAP() {
+global.runABAP = function() {
     document.getElementById("console").innerHTML = myABAP();
 }
