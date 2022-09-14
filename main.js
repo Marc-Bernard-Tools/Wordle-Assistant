@@ -3,9 +3,14 @@ const ABAP = require('@abaplint/runtime');
 function myABAP() {
     try {
         const abap = new ABAP();
-
         abap.console.clear();
+
+        // >>> BEGIN of transpiled ABAP code >>>
+
         abap.statements.write(new abap.types.Character({ length: 5 }).set('hello'));
+        
+        // <<< END of transpiled ABAP code <<<
+        
         try {
             abap();
         } catch (e) {
