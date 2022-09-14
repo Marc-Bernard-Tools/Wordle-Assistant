@@ -13,7 +13,7 @@ export function myABAP() {
         }
         const output = abap.console.get();
         console.log(output);
-        document.getElementById("console").innerHTML = output.toString();
+        return output.toString();
     } catch (error) {
         console.log(error.message);
     }
