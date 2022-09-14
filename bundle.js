@@ -2020,7 +2020,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 },{}],4:[function(require,module,exports){
 (function (global){(function (){
-let ABAP = require('@abaplint/runtime');
+require('@abaplint/runtime');
 
 function myABAP() {
     try {
