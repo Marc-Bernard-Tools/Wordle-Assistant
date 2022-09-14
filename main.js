@@ -1,4 +1,4 @@
-let ABAP = require('@abaplint/runtime');
+require('@abaplint/runtime');
 
 function myABAP() {
     try {
