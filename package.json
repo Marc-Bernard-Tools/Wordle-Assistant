@@ -4,5 +4,8 @@
     "author": {
         "name": "Marc Bernard",
         "email": "marc@marcbernardtools.com"
+    },
+    "dependencies": {
+        "@abaplint/runtime": "^2.1.63"
     }
 }
