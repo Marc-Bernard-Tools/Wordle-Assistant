@@ -1,6 +1,6 @@
 const ABAP = require('@abaplint/runtime');
 
-global.myABAP = function() {
+global.runABAP = function() {
     try {
         const abap = new ABAP();
         abap.console.clear();
@@ -19,7 +19,7 @@ global.myABAP = function() {
 
         const output = abap.console.get();
         console.log(output);
-        return output.toString();
+        document.getElementById("console").innerHTML = output.toString();
     } catch (error) {
         console.log(error.message);
     }
