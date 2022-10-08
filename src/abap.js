@@ -1,6 +1,6 @@
-import { ABAP } from '@abaplint/runtime';
+const ABAP = require('@abaplint/runtime');
 
-export function myABAP() {
+function myABAP() {
     try {
         const abap = new ABAP();
         abap.console.clear();
