@@ -6,7 +6,8 @@
         "email": "marc@marcbernardtools.com"
     },
     "scripts": {
-        "build": "browserify main.js -t babelify -o bundle.js"
+        "build": "browserify src/index.ts -t babelify -o bundle.js",
+        "tsc": "tsc"
     },
     "dependencies": {
         "@abaplint/runtime": "^2.2.17",
