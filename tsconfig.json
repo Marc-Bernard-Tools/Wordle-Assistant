@@ -2,14 +2,29 @@
     "compilerOptions": {
         "sourceMap": true,
         "module": "commonjs",
-        "target": "ES2018",
+        "moduleResolution": "node",
+        "target": "es5",
+        "outDir": "./dist",
         "lib": [
             "dom",
-            "ES2018"
+            "es5",
+            "es2015.collection",
+            "es2015.promise",
+            "es2018"
+        ],
+        "types": [],
+        "baseUrl": ".",
+        "paths": {
+            "@abaplint/runtime": [
+                "node_modules/@abaplint/runtime/build/src/"
+            ]
+        },
+        "typeRoots": [
+            "node_modules/@types"
         ]
     },
-    "files": [
-        "index.ts"
+    "include": [
+        "./src/**/*"
     ],
     "exclude": [
         "node_modules"
