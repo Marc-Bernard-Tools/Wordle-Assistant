@@ -1,6 +1,6 @@
 const ABAP = require('@abaplint/runtime');
 
-function myABAP() {
+global.myABAP = function() {
     try {
         const abap = new ABAP();
         abap.console.clear();

@@ -7887,9 +7887,10 @@ Object.defineProperty(exports,"__esModule",{value:!0});var e=require("./common-c
 
 
 },{"./common-c8d51eca.cjs":151,"./impl.cjs":152}],154:[function(require,module,exports){
+(function (global){(function (){
 const ABAP = require('@abaplint/runtime');
 
-function myABAP() {
+global.myABAP = function () {
   try {
     const abap = new ABAP();
     abap.console.clear(); // >>> BEGIN of transpiled ABAP code >>>
@@ -7910,8 +7911,9 @@ function myABAP() {
   } catch (error) {
     console.log(error.message);
   }
-}
+};
 
+}).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"@abaplint/runtime":69}],155:[function(require,module,exports){
 (function (global){(function (){
 require('./abap.js');
