@@ -26,7 +26,7 @@ async function runABAP() {
         const output = abap.console.get();
         console.log(output);
 
-        return output.toString();
+        return output;
     } catch (error) {
         console.log(error.message);
     }
@@ -34,11 +34,8 @@ async function runABAP() {
 
 function run() {
     const app = document.getElementById("app");
-
     const p = document.createElement("p");
-
     p.textContent = runABAP().toString();
-
     app?.appendChild(p);
 }
 

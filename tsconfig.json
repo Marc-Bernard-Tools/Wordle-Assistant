@@ -4,7 +4,7 @@
         "module": "commonjs",
         "moduleResolution": "node",
         "target": "es5",
-        "outDir": "./dist",
+        "outDir": ".",
         "lib": [
             "dom",
             "es5",
@@ -14,5 +14,8 @@
         ],
         "types": [],
         "baseUrl": "."
-    }
+    },
+    "files": [
+        "index.ts"
+    ]
 }
