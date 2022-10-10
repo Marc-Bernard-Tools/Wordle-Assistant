@@ -1,12 +1,14 @@
-import { ABAP } from "@abaplint/runtime";
+const abaplint = require('./node_modules/@abaplint/runtime/build/src/index');
 
-const abap = new ABAP();
+const abap = new abaplint.ABAP();
 
 const AsyncFunction = new Function(`return Object.getPrototypeOf(async function(){}).constructor`)();
 
 async function runABAP() {
     try {
         abap.console.clear();
+
+        // TODO Replace by reading ABAP from file (https://github.com/browserify/brfs)
 
         // >>> BEGIN of transpiled ABAP code >>>
 
@@ -26,21 +28,15 @@ async function runABAP() {
         const output = abap.console.get();
         console.log(output);
 
-        return output;
+        return output.toString();
     } catch (error) {
         console.log(error.message);
     }
 }
 
-function run() {
+global.run = async function run() {
     const app = document.getElementById("app");
     const p = document.createElement("p");
-    p.textContent = runABAP().toString();
-    app?.appendChild(p);
+    p.textContent = await runABAP();
+    app.appendChild(p);
 }
-
-function main() {
-    document.getElementById("run")?.addEventListener('click', (e: Event) => run());
-}
-
-main();
