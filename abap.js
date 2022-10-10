@@ -390,11 +390,11 @@ let wordle_assistant = new abap.types.ABAPObject({qualifiedName: "LCL_WORDLE"});
 wordle_assistant.set(await (new abap.Classes['PROG-ZFOOBAR-LCL_WORDLE']()).constructor_());
 
 await wordle_assistant.get().main({
-    i_letter_1: new abap.types.Character({ length: 0 }).set(''),
-    i_letter_2: new abap.types.Character({ length: 0 }).set(''),
-    i_letter_3: new abap.types.Character({ length: 0 }).set(''),
-    i_letter_4: new abap.types.Character({ length: 0 }).set(''),
-    i_letter_5: new abap.types.Character({ length: 0 }).set(''),
-    i_black_letters: new abap.types.Character({ length: 0 }).set('RKEN'),
-    i_orange_letters: new abap.types.Character({ length: 0 }).set('ALI')
+    i_letter_1: new abap.types.Character({ length: $$letter1_len$$ }).set('$$letter1$$'),
+    i_letter_2: new abap.types.Character({ length: $$letter2_len$$ }).set('$$letter2$$'),
+    i_letter_3: new abap.types.Character({ length: $$letter3_len$$ }).set('$$letter3$$'),
+    i_letter_4: new abap.types.Character({ length: $$letter4_len$$ }).set('$$letter4$$'),
+    i_letter_5: new abap.types.Character({ length: $$letter5_len$$ }).set('$$letter5$$'),
+    i_black_letters: new abap.types.Character({ length: $$black_len$$ }).set('$$black$$'),
+    i_orange_letters: new abap.types.Character({ length: $$orange_len$$ }).set('$$orange$$')
 });
