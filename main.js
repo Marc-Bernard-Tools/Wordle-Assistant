@@ -8,13 +8,16 @@ async function runABAP() {
     try {
         abap.console.clear();
 
-        // TODO Replace by reading ABAP from file (https://github.com/browserify/brfs)
+        // Read ABAP from file (needs https://github.com/browserify/brfs)
+        const fs = require('fs');
+        const code = fs.readFileSync('abap.js', 'utf8');
+        const js = "abap = abapLocal;\n" + code;
 
         // >>> BEGIN of transpiled ABAP code >>>
 
-        const js = "abap = abapLocal;\n" +
+        // const js = "abap = abapLocal;\n" + code;
 
-            "abap.statements.write(new abap.types.Character({ length: 5 }).set('hello'));";
+            //"abap.statements.write(new abap.types.Character({ length: 5 }).set('hello'));";
 
         // <<< END of transpiled ABAP code <<<
 
