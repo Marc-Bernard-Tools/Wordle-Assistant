@@ -1,8 +1,10 @@
 import { ABAP } from "@abaplint/runtime";
 
+const abap = new ABAP();
+
 const AsyncFunction = new Function(`return Object.getPrototypeOf(async function(){}).constructor`)();
 
-async function myABAP() {
+async function runABAP() {
     try {
         abap.console.clear();
 
@@ -30,16 +32,18 @@ async function myABAP() {
     }
 }
 
-const abap = new ABAP();
-
-function runABAP() {
+function run() {
     const app = document.getElementById("app");
 
     const p = document.createElement("p");
 
-    p.textContent = myABAP().toString();
+    p.textContent = runABAP().toString();
 
     app?.appendChild(p);
 }
 
-document.getElementById("run")?.addEventListener('click', (e: Event) => runABAP());
+function main() {
+    document.getElementById("run")?.addEventListener('click', (e: Event) => run());
+}
+
+main();
