@@ -1,16 +1,16 @@
 {
     "compilerOptions": {
         "sourceMap": true,
-        "module": "commonjs",
+        "module": "CommonJS",
         "moduleResolution": "node",
-        "target": "es5",
+        "target": "ES6",
         "outDir": ".",
         "lib": [
             "dom",
-            "es5",
-            "es2015.collection",
-            "es2015.promise",
-            "es2018"
+            "ES5",
+            "ES2015.Collection",
+            "ES2015.Promise",
+            "ES2018"
         ],
         "types": [],
         "baseUrl": "."
