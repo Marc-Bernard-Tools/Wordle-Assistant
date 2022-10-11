@@ -10,7 +10,7 @@ async function runABAP(letter1, letter2, letter3, letter4, letter5, black, orang
 
         // Read ABAP from file
         const fs = require("fs");
-        let code = fs.readFileSync("abap.js", "utf8");
+        let code = fs.readFileSync("abap/abap.js", "utf8");
 
         // Replace variables with input
         code = code
