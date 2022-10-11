@@ -29,3 +29,13 @@ JS code was bundled together with the [abaplint runtime](https://github.com/abap
 [Transpiler by Lars Hvam](https://github.com/abaplint/transpiler): MIT
 
 [Port of Zwordle to transpiler and stand-alone website by Marc Bernard](https://github.com/mbtools): MIT
+
+## About
+
+Made with :heart: in Canada
+
+Copyright 2022 Marc Bernard <https://marcbernardtools.com/>
+
+Follow [@marcfbe](https://twitter.com/marcfbe) on Twitter
+
+<p><a href="https://marcbernardtools.com/"><img width="160" height="65" src="https://marcbernardtools.com/info/MBT_Logo_640x250_on_Gray.png" alt="MBT Logo"></a></p>
