@@ -14,8 +14,8 @@ The application is available at [https://wordle.marcbernardtools.com](https://wo
 
 ## Design
 
-The solution is based on [Zwordle](https://github.com/hdegroot/zwordle) by Huge de Groot. The original code was adjusted slightly to be compatible with [Open-ABAP](https://github.com/open-abap/open-abap). This ABAP code was then transpiled in JavaScript using the [ABAP to JS transpiler](https://github.com/abaplint/transpiler). Some placeholders was added for passing user input to this JS code. Finally, the 
-JS code was bundled together with the [abaplint runtime](https://github.com/abaplint/abaplint) using [browserify](https://browserify.org/). The resulting website therefore consists of only two files: One for HTML and one for JavaScript.
+The solution is based on [Zwordle](https://github.com/hdegroot/zwordle) by Huge de Groot. The original code was adjusted slightly to be compatible with [Open-ABAP](https://github.com/open-abap/open-abap). This ABAP code was then transpiled into JavaScript using the [ABAP to JS transpiler](https://github.com/abaplint/transpiler). Some placeholders were added for passing user input to this JS code. Finally, the 
+JS code was bundled together with the [abaplint runtime](https://github.com/abaplint/abaplint) using [browserify](https://browserify.org/). The resulting website consists of only three files: One for HTML, one for JavaScript, and one for the Favicon.
 
 ## Code
 
