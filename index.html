@@ -4,94 +4,97 @@
 <head>
   <title>Wordle Assistant</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-	<link rel="canonical" href="https://wordle.marcbernardtools.com/" />
-	<meta name="description" content="A Wordle solver running on ABAP transpiled into JS" />
+  <link rel="canonical" href="https://wordle.marcbernardtools.com/" />
+  <meta name="description" content="A Wordle solver running on ABAP transpiled into JS" />
   <meta name="keywords" content="abap,abaplint,wordle,transpiled,MBT" />
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content="Wordle Assistant" />
-	<meta property="og:description" content="The best tools for SAP Basis, SAP BW, and SAP BW/4HANA you can find: User-focused awesome features and productivity boosters." />
-	<meta property="og:url" content="https://wordle.marcbernardtools.com/" />
-	<meta property="og:site_name" content="Wordle Assistant" />
-	<meta property="article:publisher" content="https://marcf.be" />
-	<meta property="article:modified_time" content="2022-10-11T00:00:00+00:00" />
-	<meta property="og:image" content="https://marcbernardtools.com/info/MBT_Logo_640x250_on_Gray.png" />
-	<meta property="og:image:width" content="160" />
-	<meta property="og:image:height" content="65" />
-	<meta property="og:image:type" content="image/jpeg" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:site" content="@marcfbe" />
-	<meta name="twitter:label1" content="Est. reading time" />
-	<meta name="twitter:data1" content="1 minute" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Wordle Assistant" />
+  <meta property="og:description"
+    content="The best tools for SAP Basis, SAP BW, and SAP BW/4HANA you can find: User-focused awesome features and productivity boosters." />
+  <meta property="og:url" content="https://wordle.marcbernardtools.com/" />
+  <meta property="og:site_name" content="Wordle Assistant" />
+  <meta property="article:publisher" content="https://marcf.be" />
+  <meta property="article:modified_time" content="2022-10-11T00:00:00+00:00" />
+  <meta property="og:image" content="https://marcbernardtools.com/info/MBT_Logo_640x250_on_Gray.png" />
+  <meta property="og:image:width" content="160" />
+  <meta property="og:image:height" content="65" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@marcfbe" />
+  <meta name="twitter:label1" content="Est. reading time" />
+  <meta name="twitter:data1" content="1 minute" />
   <script src="dist/bundle.js"></script>
 </head>
 
-<body style="font-size:large;font-family:monospace,Courier;">
+<body style="font-size:medium;font-family:monospace,Courier;">
   <h1 style="text-align:center;">
     Wordle Assistant
   </h1>
-  <p style="text-align:center;">A Wordle solver running on ABAP 
-transpiled into JS (<a href="https://github.com/mbtools/Wordle-on-ABAP/blob/main/README.md">Credits</a>)
-v1.0.1</p>
+  <p style="text-align:center;">
+    A Wordle solver running on ABAP transpiled into JS (<a
+      href="https://github.com/mbtools/Wordle-on-ABAP/blob/main/README.md">Credits</a>)<br />
+    v1.0.1
+  </p>
   <form action="javascript:run()">
     <table style="margin-left:auto;margin-right:auto;">
       <tr>
         <td>
-          <pre><label>Letter 1:</label></pre>
+          <label>Letter 1:</label>
         </td>
         <td>
-          <pre><input type="text" maxlength="26" id="letter1"></pre>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <pre><label>Letter 2:</label></pre>
-        </td>
-        <td>
-          <pre><input type="text" maxlength="26" id="letter2"></pre>
+          <input type="text" maxlength="26" id="letter1">
         </td>
       </tr>
       <tr>
         <td>
-          <pre><label>Letter 3:</label></pre>
+          <label>Letter 2:</label>
         </td>
         <td>
-          <pre><input type="text" maxlength="26" id="letter3"></pre>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <pre><label>Letter 4:</label></pre>
-        </td>
-        <td>
-          <pre><input type="text" maxlength="26" id="letter4"></pre>
+          <input type="text" maxlength="26" id="letter2">
         </td>
       </tr>
       <tr>
         <td>
-          <pre><label>Letter 5:</label></pre>
+          <label>Letter 3:</label>
         </td>
         <td>
-          <pre><input type="text" maxlength="26" id="letter5"></pre>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <pre><label>Black Letters:</label></pre>
-        </td>
-        <td>
-          <pre><input type="text" maxlength="26" id="black"></pre>
+          <input type="text" maxlength="26" id="letter3">
         </td>
       </tr>
       <tr>
         <td>
-          <pre><label>Orange Letters:</label></pre>
+          <label>Letter 4:</label>
         </td>
         <td>
-          <pre><input type="text" maxlength="26" id="orange"></pre>
+          <input type="text" maxlength="26" id="letter4">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Letter 5:</label>
+        </td>
+        <td>
+          <input type="text" maxlength="26" id="letter5">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Black Letters:</label>
+        </td>
+        <td>
+          <input type="text" maxlength="26" id="black">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Orange Letters:</label>
+        </td>
+        <td>
+          <input type="text" maxlength="26" id="orange">
         </td>
       </tr>
     </table>
-    <pre style="text-align:center;"><button id="run" onclick="run();">Run</button></pre>
+    <p style="text-align:center;"><button id="run" onclick="run();">Run</button></p>
   </form>
   <table style="margin-left:auto;margin-right:auto;">
     <tr>
@@ -100,12 +103,15 @@ v1.0.1</p>
       </td>
     </tr>
   </table>
-  <pre
-    style="text-align:center;">Made with ❤️ in Canada
-Copyright 2022 Marc Bernard <https://marcbernardtools.com/>
-Follow <a href="https://twitter.com/marcfbe">@marcfbe</a> on Twitter
-
-<a href="https://marcbernardtools.com/"><img width="80" height="32" src="https://marcbernardtools.com/info/MBT_Logo_640x250_on_Gray.png" alt="MBT Logo"></a></pre>
+  <p style="text-align:center;">
+    Made with ❤️ in Canada<br />
+    Copyright 2022 <a href="https://marcf.be">Marc Bernard</a><br />
+    Follow <a href="https://twitter.com/marcfbe">@marcfbe</a> on Twitter
+  </p>
+  <p>
+    <a href="https://marcbernardtools.com/"><img width="80" height="32"
+        src="https://marcbernardtools.com/info/MBT_Logo_640x250_on_Gray.png" alt="MBT Logo"></a>
+  </p>
 </body>
 
 </html>
