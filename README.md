@@ -19,8 +19,8 @@ JS code was bundled together with the [abaplint runtime](https://github.com/abap
 
 ## Code
 
-- [Open-ABAP Code](https://github.com/Marc-Bernard-Tools/Wordle-on-ABAP/blob/main/zwordle.abap)
-- [Transpiled JS Code](https://github.com/Marc-Bernard-Tools/Wordle-on-ABAP/blob/main/abap.js)
+- [Open-ABAP Code](https://github.com/Marc-Bernard-Tools/Wordle-on-ABAP/blob/main/abap/zwordle.abap)
+- [Transpiled JS Code](https://github.com/Marc-Bernard-Tools/Wordle-on-ABAP/blob/main/abap/abap.js)
 
 ## Credits
 
