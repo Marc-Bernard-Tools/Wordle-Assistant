@@ -25,12 +25,25 @@ Next, I pasted the Open-ABAP code into the [ABAP to JS transpiler playground](ht
 
 To link the input from the website to the transpiled ABAP code, I added some placeholders into the method call (see `$$var$$` [here](https://github.com/Marc-Bernard-Tools/Wordle-Assistant/blob/c7559bc6f7acc7b4a56df46ee4898e7fdd6870af/abap/abap.js#L392-L400)). These placeholders will be replaced by the user input using [JavaScript](https://github.com/Marc-Bernard-Tools/Wordle-Assistant/blob/c7559bc6f7acc7b4a56df46ee4898e7fdd6870af/main.js#L15-L30).
 
-Finally, we will [execute the Open-ABAP code and return the console output](https://github.com/Marc-Bernard-Tools/Wordle-Assistant/blob/c7559bc6f7acc7b4a56df46ee4898e7fdd6870af/main.js#L32-L45) to the HTML page.  
+When the user clicks the button or hits enter, it will [execute the Open-ABAP code and return the console output](https://github.com/Marc-Bernard-Tools/Wordle-Assistant/blob/c7559bc6f7acc7b4a56df46ee4898e7fdd6870af/main.js#L32-L45) to the HTML page.  
+
+Finally, I used [browserify](https://github.com/Marc-Bernard-Tools/Wordle-Assistant/blob/70946c35ccef70818c95f7fa8207e2163214c4c5/package.json#L8-L10) to bundle the the JS of this app and the abaplint runtime together into a [single JS file](https://github.com/Marc-Bernard-Tools/Wordle-Assistant/blob/main/dist/bundle.js) which is embedded in the [HTML page](https://github.com/Marc-Bernard-Tools/Wordle-Assistant/blob/main/index.html).
+
+## Build Yourself
+
+1. Clone this repo
+2. Run `npm install`
+  Optionally:
+  - Edit `index.html`, `main.js`, or `abap/zwordle.abap` 
+  - Transpile `zwordle.abap` into `abap/abap.js` (if ABAP has changed)
+  - Add placeholders to `abap/abap.js` (see above)
+  - Bundle `npm run build`
+3. Copy `index.html`, `dist/bundle.js`, and `favicon.ico` to your host (or use GitHub pages)
 
 ## Code
 
 - [Open-ABAP Code](https://github.com/Marc-Bernard-Tools/Wordle-on-ABAP/blob/main/abap/zwordle.abap)
-- [Transpiled JS Code](https://github.com/Marc-Bernard-Tools/Wordle-on-ABAP/blob/main/abap/abap.js)
+- [Transpiled ABAP Code](https://github.com/Marc-Bernard-Tools/Wordle-on-ABAP/blob/main/abap/abap.js)
 
 ## Credits
 
