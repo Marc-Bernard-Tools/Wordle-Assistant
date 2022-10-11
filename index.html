@@ -9,72 +9,80 @@
 </head>
 
 <body>
-  <h1>
-    <pre>Wordle Assistant</pre>
-  </h1>
-  <pre>A Wordle solver running on ABAP transpiled into JS (<a href="https://github.com/mbtools/Wordle-on-ABAP/blob/main/README.md">Credits</a>)</pre>
-  <form action="javascript:run()">
-    <table>
-      <tr>
-        <td>
-          <pre><label>Letter 1:</label></pre>
-        </td>
-        <td>
-          <pre><input type="text" maxlength="26" id="letter1"></pre>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <pre><label>Letter 2:</label></pre>
-        </td>
-        <td>
-          <pre><input type="text" maxlength="26" id="letter2"></pre>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <pre><label>Letter 3:</label></pre>
-        </td>
-        <td>
-          <pre><input type="text" maxlength="26" id="letter3"></pre>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <pre><label>Letter 4:</label></pre>
-        </td>
-        <td>
-          <pre><input type="text" maxlength="26" id="letter4"></pre>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <pre><label>Letter 5:</label></pre>
-        </td>
-        <td>
-          <pre><input type="text" maxlength="26" id="letter5"></pre>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <pre><label>Black Letters:</label></pre>
-        </td>
-        <td>
-          <pre><input type="text" maxlength="26" id="black"></pre>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <pre><label>Orange Letters:</label></pre>
-        </td>
-        <td>
-          <pre><input type="text" maxlength="26" id="orange"></pre>
-        </td>
-      </tr>
-    </table>
-    <pre><button id="run" onclick="run();">Run</button></pre>
-  </form>
-  <pre id="app"></pre>
+  <table width="100%">
+    <tr>
+      <td width="*"></td>
+      <td width="375px">
+        <h1>
+          <pre>Wordle Assistant</pre>
+        </h1>
+        <pre>A Wordle solver running on ABAP transpiled into JS (<a href="https://github.com/mbtools/Wordle-on-ABAP/blob/main/README.md">Credits</a>)</pre>
+        <form action="javascript:run()">
+          <table>
+            <tr>
+              <td>
+                <pre><label>Letter 1:</label></pre>
+              </td>
+              <td>
+                <pre><input type="text" maxlength="26" id="letter1"></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <pre><label>Letter 2:</label></pre>
+              </td>
+              <td>
+                <pre><input type="text" maxlength="26" id="letter2"></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <pre><label>Letter 3:</label></pre>
+              </td>
+              <td>
+                <pre><input type="text" maxlength="26" id="letter3"></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <pre><label>Letter 4:</label></pre>
+              </td>
+              <td>
+                <pre><input type="text" maxlength="26" id="letter4"></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <pre><label>Letter 5:</label></pre>
+              </td>
+              <td>
+                <pre><input type="text" maxlength="26" id="letter5"></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <pre><label>Black Letters:</label></pre>
+              </td>
+              <td>
+                <pre><input type="text" maxlength="26" id="black"></pre>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <pre><label>Orange Letters:</label></pre>
+              </td>
+              <td>
+                <pre><input type="text" maxlength="26" id="orange"></pre>
+              </td>
+            </tr>
+          </table>
+          <pre><button id="run" onclick="run();">Run</button></pre>
+        </form>
+        <pre id="app"></pre>
+      </td>
+      <td width="*"></td>
+    </tr>
+  </table>
 </body>
 
 </html>
