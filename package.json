@@ -6,7 +6,7 @@
         "email": "marc@marcbernardtools.com"
     },
     "scripts": {
-        "build": "browserify -t brfs main.js -o bundle.js"
+        "build": "browserify -t brfs main.js -o dist/bundle.js"
     },
     "devDependencies": {
         "@abaplint/runtime": "^2.2.17",
