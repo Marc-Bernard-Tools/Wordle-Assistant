@@ -6,11 +6,11 @@ A Wordle solver running on ABAP transpiled into JS
 
 The application is available at [https://wordle.marcbernardtools.com](https://wordle.marcbernardtools.com).
 
-![image](https://user-images.githubusercontent.com/59966492/194974023-7b2ebb3c-5562-416a-beee-0be8877a1506.png)
+![image](https://user-images.githubusercontent.com/59966492/194975012-fba4d76c-293e-47c8-bb1a-ba960230f4b7.png)
 
 ## Example Result
 
-![image](https://user-images.githubusercontent.com/59966492/194974100-5064a97a-cbd4-43b4-bcf7-b8d5e25b1700.png)
+![image](https://user-images.githubusercontent.com/59966492/194975219-1d377dc6-5286-4148-9cab-66339d365dbb.png)
 
 ## Design
 
