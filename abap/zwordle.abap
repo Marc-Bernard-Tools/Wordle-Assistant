@@ -127,32 +127,32 @@ class lcl_wordle implementation.
     if i_letter_1 is initial.
       letter1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.
     else.
-      letter1 = i_letter_1.
+      letter1 = to_upper( i_letter_1 ).
     endif.
     if i_letter_2 is initial.
       letter2 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.
     else.
-      letter2 = i_letter_2.
+      letter2 = to_upper( i_letter_2 ).
     endif.
     if i_letter_3 is initial.
       letter3 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.
     else.
-      letter3 = i_letter_3.
+      letter3 = to_upper( i_letter_3 ).
     endif.
     if i_letter_4 is initial.
       letter4 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.
     else.
-      letter4 = i_letter_4.
+      letter4 = to_upper( i_letter_4 ).
     endif.
     if i_letter_5 is initial.
       letter5 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.
     else.
-      letter5 = i_letter_5.
+      letter5 = to_upper( i_letter_5 ).
     endif.
 
-    black_letters = i_black_letters.
+    black_letters = to_upper( i_black_letters ).
 
-    orange_letters = i_orange_letters.
+    orange_letters = to_upper( i_orange_letters ).
 
     remove_black_letters( ).
 
