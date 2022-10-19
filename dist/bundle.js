@@ -52,9 +52,17 @@ async function runABAP(letter1, letter2, letter3, letter4, letter5, black, orang
     }
 }
 
-//global.run = async function run() {
-global.run = async function run() {
+function success() {
     const app = document.getElementById("app");
+    app.textContent = 'Success';
+}
+
+function fail() {
+    const app = document.getElementById("app");
+    app.textContent = 'Error';
+}
+
+global.run = function run() {
     const letter1 = document.getElementById("letter1").value;
     const letter2 = document.getElementById("letter2").value;
     const letter3 = document.getElementById("letter3").value;
@@ -62,7 +70,10 @@ global.run = async function run() {
     const letter5 = document.getElementById("letter5").value;
     const black = document.getElementById("black").value;
     const orange = document.getElementById("orange").value;
-    app.textContent = await runABAP(letter1, letter2, letter3, letter4, letter5, black, orange);
+
+    runABAP(letter1, letter2, letter3, letter4, letter5, black, orange).then( success(), fail() );
+
+    //app.textContent = await runABAP(letter1, letter2, letter3, letter4, letter5, black, orange);
 }
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
