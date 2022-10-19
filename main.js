@@ -2,9 +2,9 @@ const abaplint = require("./node_modules/@abaplint/runtime/build/src/index");
 
 const abap = new abaplint.ABAP();
 
-//const AsyncFunction = new Function(`return Object.getPrototypeOf(async function(){}).constructor`)();
+const AsyncFunction = new Function(`return Object.getPrototypeOf(async function(){}).constructor`)();
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncFunction
-const AsyncFunction = (async function () { }).constructor;
+// const AsyncFunction = (async function () { }).constructor;
 
 async function runABAP(letter1, letter2, letter3, letter4, letter5, black, orange) {
     try {
@@ -50,17 +50,9 @@ async function runABAP(letter1, letter2, letter3, letter4, letter5, black, orang
     }
 }
 
-function success() {
-    const app = document.getElementById("app");
-    app.textContent = 'Success';
-}
-
-function fail() {
-    const app = document.getElementById("app");
-    app.textContent = 'Error';
-}
-
 global.run = function run() {
+    const app = document.getElementById("app");
+
     const letter1 = document.getElementById("letter1").value;
     const letter2 = document.getElementById("letter2").value;
     const letter3 = document.getElementById("letter3").value;
@@ -69,7 +61,13 @@ global.run = function run() {
     const black = document.getElementById("black").value;
     const orange = document.getElementById("orange").value;
 
-    runABAP(letter1, letter2, letter3, letter4, letter5, black, orange).then( success(), fail() );
+    runABAP(letter1, letter2, letter3, letter4, letter5, black, orange)
+        .then((result) => {
+            app.textContent = result;
+        })
+        .catch((error) => {
+            app.textContent = `There was a problem: ${error}`;
+        });
 
     //app.textContent = await runABAP(letter1, letter2, letter3, letter4, letter5, black, orange);
 }
