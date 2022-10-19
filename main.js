@@ -52,7 +52,6 @@ async function runABAP(letter1, letter2, letter3, letter4, letter5, black, orang
 
 global.run = async function run() {
     const app = document.getElementById("app");
-
     const letter1 = document.getElementById("letter1").value;
     const letter2 = document.getElementById("letter2").value;
     const letter3 = document.getElementById("letter3").value;
@@ -60,14 +59,5 @@ global.run = async function run() {
     const letter5 = document.getElementById("letter5").value;
     const black = document.getElementById("black").value;
     const orange = document.getElementById("orange").value;
-
-    //runABAP(letter1, letter2, letter3, letter4, letter5, black, orange)
-    //    .then((result) => {
-    //        app.textContent = result;
-    //    })
-    //    .catch((error) => {
-    //        app.textContent = `There was a problem: ${error}`;
-    //    });
-
     app.textContent = await runABAP(letter1, letter2, letter3, letter4, letter5, black, orange);
 }
