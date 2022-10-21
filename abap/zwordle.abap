@@ -61,6 +61,9 @@ class lcl_wordle definition.
 
   private section.
 
+    constants:
+      c_abc type c length 26 value 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.
+
     types:
 
       ty_word_score type f, "p length 6 decimals 1,
@@ -91,6 +94,7 @@ class lcl_wordle definition.
       matched_word_tab     type ty_matched_word_tab.
 
     methods:
+      clean_input importing i_input type string returning value(r_input) type string,
       build_word_tab_v2,  "List of 5-letter words. Source: Collins Scrabble Words Dec 2021
       build_letter_frequency_tab, "Letter Frequency for English Dictionary Words
       build_regex_string,
@@ -115,44 +119,54 @@ class lcl_wordle implementation.
 
     write / 'WORDLE ASSISTANT'.
 
+    " Check input
     inp = i_letter_1 && i_letter_2 && i_letter_3 && i_letter_4 && i_letter_5 && i_black_letters && i_orange_letters.
 
     if inp is initial.
       write: /,
-        / 'Fill in the parameters of the MAIN method call',
-        / 'at the end of the ABAP coding'.
+        / 'You have to fill in at least on of the input fields'.
       return.
     endif.
 
+    " Clean-up input
     if i_letter_1 is initial.
-      letter1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.
+      letter1 = c_abc.
     else.
-      letter1 = to_upper( i_letter_1 ).
+      letter1 = clean_input( i_letter_1 ).
     endif.
     if i_letter_2 is initial.
-      letter2 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.
+      letter2 = c_abc.
     else.
-      letter2 = to_upper( i_letter_2 ).
+      letter2 = clean_input( i_letter_2 ).
     endif.
     if i_letter_3 is initial.
-      letter3 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.
+      letter3 = c_abc.
     else.
-      letter3 = to_upper( i_letter_3 ).
+      letter3 = clean_input( i_letter_3 ).
     endif.
     if i_letter_4 is initial.
-      letter4 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.
+      letter4 = c_abc.
     else.
-      letter4 = to_upper( i_letter_4 ).
+      letter4 = clean_input( i_letter_4 ).
     endif.
     if i_letter_5 is initial.
-      letter5 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.
+      letter5 = c_abc.
     else.
-      letter5 = to_upper( i_letter_5 ).
+      letter5 = clean_input( i_letter_5 ).
     endif.
 
-    black_letters = to_upper( i_black_letters ).
+    black_letters = clean_input( i_black_letters ).
 
-    orange_letters = to_upper( i_orange_letters ).
+    orange_letters = clean_input( i_orange_letters ).
+
+    " Check input again
+    inp = letter1 && letter2 && letter3 && letter4 && letter5 && black_letters && orange_letters.
+
+    if inp is initial.
+      write: /,
+        / 'You have to fill in at least on of the input fields'.
+      return.
+    endif.
 
     remove_black_letters( ).
 
@@ -166,6 +180,18 @@ class lcl_wordle implementation.
 
     display_output( ).
 
+  endmethod.
+
+
+  method clean_input.
+    data temp type string.
+    temp = to_upper( i_input ).
+    do strlen( temp ) times.
+      if temp(1) CA c_abc.
+        r_input = r_input && temp.
+      endif.
+      shift temp left.
+    enddo.
   endmethod.
 
 

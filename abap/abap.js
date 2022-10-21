@@ -1,9 +1,3 @@
-const constant_0 = new abap.types.Integer().set(0);
-const constant_1 = new abap.types.Integer().set(1);
-const constant_100 = new abap.types.Integer().set(100);
-const constant_26 = new abap.types.Integer().set(26);
-const constant_5 = new abap.types.Integer().set(5);
-const constant_6 = new abap.types.Integer().set(6);
 class lcl_wordle {
   static INTERNAL_TYPE = 'CLAS';
   static IMPLEMENTED_INTERFACES = [];
@@ -14,6 +8,7 @@ class lcl_wordle {
     this.letter_frequency_tab = new abap.types.Table(new abap.types.Structure({first_letter: new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_RELATIVE_FREQUENCY"}), other_letters: new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_RELATIVE_FREQUENCY"})}, "lcl_wordle=>ty_letter_frequency"), {"withHeader":false,"type":"STANDARD","isUnique":false,"keyFields":[]}, "lcl_wordle=>ty_letter_frequency_tab");
     this.regex_string = new abap.types.String({qualifiedName: "STRING"});
     this.matched_word_tab = new abap.types.Table(new abap.types.Structure({word: new abap.types.Character({length: 5, qualifiedName: "lcl_wordle=>char5"}), vowel_count: new abap.types.Integer({qualifiedName: "LCL_WORDLE=>TY_MATCHED_WORD-VOWEL_COUNT"}), consonant_count: new abap.types.Integer({qualifiedName: "LCL_WORDLE=>TY_MATCHED_WORD-CONSONANT_COUNT"}), contains_all_orange_letters: new abap.types.Character({qualifiedName: "ABAP_BOOL"}), word_score: new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_WORD_SCORE"})}, "lcl_wordle=>ty_matched_word"), {"withHeader":false,"type":"STANDARD","isUnique":false,"keyFields":[]}, "lcl_wordle=>ty_matched_word_tab");
+    this.c_abc = lcl_wordle.c_abc;
     return this;
   }
   async main(INPUT) {
@@ -36,37 +31,42 @@ class lcl_wordle {
     inp.set(abap.operators.concat(i_letter_1,abap.operators.concat(i_letter_2,abap.operators.concat(i_letter_3,abap.operators.concat(i_letter_4,abap.operators.concat(i_letter_5,abap.operators.concat(i_black_letters,i_orange_letters)))))));
     if (abap.compare.initial(inp)) {
       abap.statements.write('',{newLine: true,skipLine: true});
-      abap.statements.write(new abap.types.Character({length: 46}).set('Fill in the parameters of the MAIN method call'),{newLine: true});
-      abap.statements.write(new abap.types.Character({length: 29}).set('at the end of the ABAP coding'),{newLine: true});
+      abap.statements.write(new abap.types.Character({length: 51}).set('You have to fill in at least on of the input fields'),{newLine: true});
       return;
     }
     if (abap.compare.initial(i_letter_1)) {
-      lcl_wordle.letter1.set(new abap.types.Character({length: 26}).set('ABCDEFGHIJKLMNOPQRSTUVWXYZ'));
+      lcl_wordle.letter1.set(lcl_wordle.c_abc);
     } else {
-      lcl_wordle.letter1.set(abap.builtin.to_upper({val: i_letter_1}));
+      lcl_wordle.letter1.set((await this.clean_input({i_input: i_letter_1})));
     }
     if (abap.compare.initial(i_letter_2)) {
-      lcl_wordle.letter2.set(new abap.types.Character({length: 26}).set('ABCDEFGHIJKLMNOPQRSTUVWXYZ'));
+      lcl_wordle.letter2.set(lcl_wordle.c_abc);
     } else {
-      lcl_wordle.letter2.set(abap.builtin.to_upper({val: i_letter_2}));
+      lcl_wordle.letter2.set((await this.clean_input({i_input: i_letter_2})));
     }
     if (abap.compare.initial(i_letter_3)) {
-      lcl_wordle.letter3.set(new abap.types.Character({length: 26}).set('ABCDEFGHIJKLMNOPQRSTUVWXYZ'));
+      lcl_wordle.letter3.set(lcl_wordle.c_abc);
     } else {
-      lcl_wordle.letter3.set(abap.builtin.to_upper({val: i_letter_3}));
+      lcl_wordle.letter3.set((await this.clean_input({i_input: i_letter_3})));
     }
     if (abap.compare.initial(i_letter_4)) {
-      lcl_wordle.letter4.set(new abap.types.Character({length: 26}).set('ABCDEFGHIJKLMNOPQRSTUVWXYZ'));
+      lcl_wordle.letter4.set(lcl_wordle.c_abc);
     } else {
-      lcl_wordle.letter4.set(abap.builtin.to_upper({val: i_letter_4}));
+      lcl_wordle.letter4.set((await this.clean_input({i_input: i_letter_4})));
     }
     if (abap.compare.initial(i_letter_5)) {
-      lcl_wordle.letter5.set(new abap.types.Character({length: 26}).set('ABCDEFGHIJKLMNOPQRSTUVWXYZ'));
+      lcl_wordle.letter5.set(lcl_wordle.c_abc);
     } else {
-      lcl_wordle.letter5.set(abap.builtin.to_upper({val: i_letter_5}));
+      lcl_wordle.letter5.set((await this.clean_input({i_input: i_letter_5})));
     }
-    lcl_wordle.black_letters.set(abap.builtin.to_upper({val: i_black_letters}));
-    lcl_wordle.orange_letters.set(abap.builtin.to_upper({val: i_orange_letters}));
+    lcl_wordle.black_letters.set((await this.clean_input({i_input: i_black_letters})));
+    lcl_wordle.orange_letters.set((await this.clean_input({i_input: i_orange_letters})));
+    inp.set(abap.operators.concat(lcl_wordle.letter1,abap.operators.concat(lcl_wordle.letter2,abap.operators.concat(lcl_wordle.letter3,abap.operators.concat(lcl_wordle.letter4,abap.operators.concat(lcl_wordle.letter5,abap.operators.concat(lcl_wordle.black_letters,lcl_wordle.orange_letters)))))));
+    if (abap.compare.initial(inp)) {
+      abap.statements.write('',{newLine: true,skipLine: true});
+      abap.statements.write(new abap.types.Character({length: 51}).set('You have to fill in at least on of the input fields'),{newLine: true});
+      return;
+    }
     await this.remove_black_letters();
     await this.build_word_tab_v2();
     await this.build_letter_frequency_tab();
@@ -74,13 +74,29 @@ class lcl_wordle {
     await this.get_matched_words();
     await this.display_output();
   }
+  async clean_input(INPUT) {
+    let r_input = new abap.types.String({qualifiedName: "STRING"});
+    let i_input = new abap.types.String({qualifiedName: "STRING"});
+    if (INPUT && INPUT.i_input) {i_input.set(INPUT.i_input);}
+    let temp = new abap.types.String({qualifiedName: "STRING"});
+    temp.set(abap.builtin.to_upper({val: i_input}));
+    const unique5 = abap.builtin.strlen({val: temp}).get();
+    for (let unique6 = 0; unique6 < unique5; unique6++) {
+      abap.builtin.sy.get().index.set(unique6 + 1);
+      if (abap.compare.ca(temp.getOffset({length: 1}), lcl_wordle.c_abc)) {
+        r_input.set(abap.operators.concat(r_input,temp));
+      }
+      abap.statements.shift(temp, {direction: 'LEFT'});
+    }
+    return r_input;
+  }
   async remove_black_letters() {
     return lcl_wordle.remove_black_letters();
   }
   static async remove_black_letters() {
     let black_letters_regex = new abap.types.String({qualifiedName: "STRING"});
     if (abap.compare.initial(lcl_wordle.black_letters) === false) {
-      if (abap.compare.eq(abap.builtin.strlen({val: lcl_wordle.black_letters}), constant_1)) {
+      if (abap.compare.eq(abap.builtin.strlen({val: lcl_wordle.black_letters}), new abap.types.Integer().set(1))) {
         black_letters_regex.set(lcl_wordle.black_letters.getOffset({offset: 0, length: 1}));
       } else {
         black_letters_regex.set(new abap.types.String().set(`[${abap.templateFormatting(lcl_wordle.black_letters)}]`));
@@ -100,35 +116,35 @@ class lcl_wordle {
     let vletter5 = new abap.types.String({qualifiedName: "STRING"});
     if (abap.compare.initial(lcl_wordle.letter1)) {
       vletter1.set(new abap.types.Character({length: 1}).set('.'));
-    } else if (abap.compare.eq(abap.builtin.strlen({val: lcl_wordle.letter1}), constant_1)) {
+    } else if (abap.compare.eq(abap.builtin.strlen({val: lcl_wordle.letter1}), new abap.types.Integer().set(1))) {
       vletter1.set(lcl_wordle.letter1);
     } else {
       vletter1.set(new abap.types.String().set(`[${abap.templateFormatting(lcl_wordle.letter1)}]`));
     }
     if (abap.compare.initial(lcl_wordle.letter2)) {
       vletter2.set(new abap.types.Character({length: 1}).set('.'));
-    } else if (abap.compare.eq(abap.builtin.strlen({val: lcl_wordle.letter2}), constant_1)) {
+    } else if (abap.compare.eq(abap.builtin.strlen({val: lcl_wordle.letter2}), new abap.types.Integer().set(1))) {
       vletter2.set(lcl_wordle.letter2);
     } else {
       vletter2.set(new abap.types.String().set(`[${abap.templateFormatting(lcl_wordle.letter2)}]`));
     }
     if (abap.compare.initial(lcl_wordle.letter3)) {
       vletter3.set(new abap.types.Character({length: 1}).set('.'));
-    } else if (abap.compare.eq(abap.builtin.strlen({val: lcl_wordle.letter3}), constant_1)) {
+    } else if (abap.compare.eq(abap.builtin.strlen({val: lcl_wordle.letter3}), new abap.types.Integer().set(1))) {
       vletter3.set(lcl_wordle.letter3);
     } else {
       vletter3.set(new abap.types.String().set(`[${abap.templateFormatting(lcl_wordle.letter3)}]`));
     }
     if (abap.compare.initial(lcl_wordle.letter4)) {
       vletter4.set(new abap.types.Character({length: 1}).set('.'));
-    } else if (abap.compare.eq(abap.builtin.strlen({val: lcl_wordle.letter4}), constant_1)) {
+    } else if (abap.compare.eq(abap.builtin.strlen({val: lcl_wordle.letter4}), new abap.types.Integer().set(1))) {
       vletter4.set(lcl_wordle.letter4);
     } else {
       vletter4.set(new abap.types.String().set(`[${abap.templateFormatting(lcl_wordle.letter4)}]`));
     }
     if (abap.compare.initial(lcl_wordle.letter5)) {
       vletter5.set(new abap.types.Character({length: 1}).set('.'));
-    } else if (abap.compare.eq(abap.builtin.strlen({val: lcl_wordle.letter5}), constant_1)) {
+    } else if (abap.compare.eq(abap.builtin.strlen({val: lcl_wordle.letter5}), new abap.types.Integer().set(1))) {
       vletter5.set(lcl_wordle.letter5);
     } else {
       vletter5.set(new abap.types.String().set(`[${abap.templateFormatting(lcl_wordle.letter5)}]`));
@@ -138,13 +154,13 @@ class lcl_wordle {
   async get_matched_words() {
     let matched_word = new abap.types.Structure({word: new abap.types.Character({length: 5, qualifiedName: "lcl_wordle=>char5"}), vowel_count: new abap.types.Integer({qualifiedName: "LCL_WORDLE=>TY_MATCHED_WORD-VOWEL_COUNT"}), consonant_count: new abap.types.Integer({qualifiedName: "LCL_WORDLE=>TY_MATCHED_WORD-CONSONANT_COUNT"}), contains_all_orange_letters: new abap.types.Character({qualifiedName: "ABAP_BOOL"}), word_score: new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_WORD_SCORE"})}, "lcl_wordle=>ty_matched_word");
     let word_word = new abap.types.String({qualifiedName: "STRING"});
-    for await (const unique3 of abap.statements.loop(this.word_tab)) {
-      word_word.set(unique3);
+    for await (const unique7 of abap.statements.loop(this.word_tab)) {
+      word_word.set(unique7);
       abap.statements.find(word_word, {regex: this.regex_string});
-      if (abap.compare.eq(abap.builtin.sy.get().subrc, constant_0)) {
+      if (abap.compare.eq(abap.builtin.sy.get().subrc, new abap.types.Integer().set(0))) {
         matched_word.get().word.set(word_word);
         matched_word.get().vowel_count.set((await this.get_vowel_count({i_word: matched_word.get().word})));
-        matched_word.get().consonant_count.set(abap.operators.minus(constant_5,matched_word.get().vowel_count));
+        matched_word.get().consonant_count.set(abap.operators.minus(new abap.types.Integer().set(5),matched_word.get().vowel_count));
         matched_word.get().contains_all_orange_letters.set((await this.contains_all_orange_letters({i_word: matched_word.get().word})));
         matched_word.get().word_score.set((await this.get_word_score({i_word: matched_word.get().word})));
         abap.statements.append({source: matched_word, target: this.matched_word_tab});
@@ -181,9 +197,9 @@ class lcl_wordle {
     abap.statements.write(new abap.types.Character({length: 1}).set(' '));
     abap.statements.write(new abap.types.Character({length: 10}).set('Word Score'));
     abap.statements.write(new abap.types.Character({length: 48}).set('------------------------------------------------'),{newLine: true});
-    for await (const unique4 of abap.statements.loop(this.matched_word_tab)) {
-      matched_word.set(unique4);
-      score.set(abap.operators.multiply(matched_word.get().word_score,constant_100));
+    for await (const unique8 of abap.statements.loop(this.matched_word_tab)) {
+      matched_word.set(unique8);
+      score.set(abap.operators.multiply(matched_word.get().word_score,new abap.types.Integer().set(100)));
       abap.statements.write(matched_word.get().word,{newLine: true});
       abap.statements.write(new abap.types.Character({length: 3}).set('   '));
       abap.statements.write(matched_word.get().vowel_count);
@@ -256,19 +272,19 @@ class lcl_wordle {
     let r_word_score = new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_WORD_SCORE"});
     let i_word = new abap.types.Character({length: 5, qualifiedName: "lcl_wordle=>char5"});
     if (INPUT && INPUT.i_word) {i_word.set(INPUT.i_word);}
-    if (abap.compare.gt(abap.builtin.strlen({val: lcl_wordle.letter1}), constant_1)) {
+    if (abap.compare.gt(abap.builtin.strlen({val: lcl_wordle.letter1}), new abap.types.Integer().set(1))) {
       r_word_score.set((abap.operators.add(r_word_score,await this.get_letter_frequency({i_letter: i_word.getOffset({offset: 0, length: 1}), i_first: abap.builtin.abap_true}))));
     }
-    if (abap.compare.gt(abap.builtin.strlen({val: lcl_wordle.letter2}), constant_1)) {
+    if (abap.compare.gt(abap.builtin.strlen({val: lcl_wordle.letter2}), new abap.types.Integer().set(1))) {
       r_word_score.set((abap.operators.add(r_word_score,await this.get_letter_frequency({i_letter: i_word.getOffset({offset: 1, length: 1}), i_first: abap.builtin.abap_false}))));
     }
-    if (abap.compare.gt(abap.builtin.strlen({val: lcl_wordle.letter3}), constant_1)) {
+    if (abap.compare.gt(abap.builtin.strlen({val: lcl_wordle.letter3}), new abap.types.Integer().set(1))) {
       r_word_score.set((abap.operators.add(r_word_score,await this.get_letter_frequency({i_letter: i_word.getOffset({offset: 2, length: 1}), i_first: abap.builtin.abap_false}))));
     }
-    if (abap.compare.gt(abap.builtin.strlen({val: lcl_wordle.letter4}), constant_1)) {
+    if (abap.compare.gt(abap.builtin.strlen({val: lcl_wordle.letter4}), new abap.types.Integer().set(1))) {
       r_word_score.set((abap.operators.add(r_word_score,await this.get_letter_frequency({i_letter: i_word.getOffset({offset: 3, length: 1}), i_first: abap.builtin.abap_false}))));
     }
-    if (abap.compare.gt(abap.builtin.strlen({val: lcl_wordle.letter5}), constant_1)) {
+    if (abap.compare.gt(abap.builtin.strlen({val: lcl_wordle.letter5}), new abap.types.Integer().set(1))) {
       r_word_score.set((abap.operators.add(r_word_score,await this.get_letter_frequency({i_letter: i_word.getOffset({offset: 4, length: 1}), i_first: abap.builtin.abap_false}))));
     }
     return r_word_score;
@@ -281,9 +297,9 @@ class lcl_wordle {
     if (INPUT && INPUT.i_first) {i_first = INPUT.i_first;}
     let fs_frequency_ = new abap.types.FieldSymbol(new abap.types.Structure({first_letter: new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_RELATIVE_FREQUENCY"}), other_letters: new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_RELATIVE_FREQUENCY"})}, "lcl_wordle=>ty_letter_frequency"));
     let v_index = new abap.types.Integer({qualifiedName: "I"});
-    v_index.set(abap.operators.add(abap.builtin.find({val: abap.builtin.sy.get().abcde, sub: i_letter}),constant_1));
+    v_index.set(abap.operators.add(abap.builtin.find({val: abap.builtin.sy.get().abcde, sub: i_letter}),new abap.types.Integer().set(1)));
     abap.statements.readTable(this.letter_frequency_tab,{index: v_index,assigning: fs_frequency_});
-    abap.statements.assert(abap.compare.eq(abap.builtin.sy.get().subrc, constant_0));
+    abap.statements.assert(abap.compare.eq(abap.builtin.sy.get().subrc, new abap.types.Integer().set(0)));
     if (abap.compare.eq(i_first, abap.builtin.abap_true)) {
       r_frequency.set(fs_frequency_.get().first_letter);
     } else {
@@ -386,6 +402,8 @@ lcl_wordle.letter4 = new abap.types.Character({length: 26, qualifiedName: "lcl_w
 lcl_wordle.letter5 = new abap.types.Character({length: 26, qualifiedName: "lcl_wordle=>char26"});
 lcl_wordle.black_letters = new abap.types.Character({length: 26, qualifiedName: "lcl_wordle=>char26"});
 lcl_wordle.orange_letters = new abap.types.Character({length: 26, qualifiedName: "lcl_wordle=>char26"});
+lcl_wordle.c_abc = new abap.types.Character({length: 26, qualifiedName: "undefined"});
+lcl_wordle.c_abc.set('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
 let wordle_assistant = new abap.types.ABAPObject({qualifiedName: "LCL_WORDLE"});
 wordle_assistant.set(await (new abap.Classes['PROG-ZFOOBAR-LCL_WORDLE']()).constructor_());
 
