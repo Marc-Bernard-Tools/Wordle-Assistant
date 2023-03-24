@@ -53,10 +53,6 @@ Finally, I used [browserify](https://github.com/Marc-Bernard-Tools/Wordle-Assist
 
 [Port of Zwordle to transpiler and stand-alone website by Marc Bernard](https://github.com/mbtools): MIT
 
-## Contributions
-
-All contributions are welcome! Read our [Contribution Guidelines](https://github.com/Marc-Bernard-Tools/.github/blob/main/CODE_OF_CONDUCT.md), fork this repo, and create a pull request.
-
 ## About
 
 Made with :heart: in Canada
