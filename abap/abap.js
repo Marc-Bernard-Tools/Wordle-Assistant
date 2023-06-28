@@ -116,11 +116,11 @@ class lcl_wordle {
     let temp = new abap.types.String({qualifiedName: "STRING"});
     temp.set(abap.builtin.to_upper({val: i_input}));
     const indexBackup1 = abap.builtin.sy.get().index.get();
-    const unique17 = abap.builtin.strlen({val: temp}).get();
-    for (let unique18 = 0; unique18 < unique17; unique18++) {
-      abap.builtin.sy.get().index.set(unique18 + 1);
+    const unique41 = abap.builtin.strlen({val: temp}).get();
+    for (let unique42 = 0; unique42 < unique41; unique42++) {
+      abap.builtin.sy.get().index.set(unique42 + 1);
       if (abap.compare.ca(temp.getOffset({length: 1}), lcl_wordle.c_abc)) {
-        r_input.set(abap.operators.concat(r_input,temp));
+        r_input.set(abap.operators.concat(r_input,temp.getOffset({length: 1})));
       }
       abap.statements.shift(temp, {direction: 'LEFT'});
     }
@@ -191,8 +191,8 @@ class lcl_wordle {
   async get_matched_words() {
     let matched_word = new abap.types.Structure({"word": new abap.types.Character(5, {"qualifiedName":"lcl_wordle=>char5"}), "vowel_count": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>TY_MATCHED_WORD-VOWEL_COUNT"}), "consonant_count": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>TY_MATCHED_WORD-CONSONANT_COUNT"}), "contains_all_orange_letters": new abap.types.Character(1, {"qualifiedName":"ABAP_BOOL","ddicName":"ABAP_BOOL"}), "word_score": new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_WORD_SCORE"})}, "lcl_wordle=>ty_matched_word");
     let word_word = new abap.types.String({qualifiedName: "STRING"});
-    for await (const unique19 of abap.statements.loop(this.word_tab)) {
-      word_word.set(unique19);
+    for await (const unique43 of abap.statements.loop(this.word_tab)) {
+      word_word.set(unique43);
       abap.statements.find(word_word, {regex: this.regex_string});
       if (abap.compare.eq(abap.builtin.sy.get().subrc, new abap.types.Integer().set(0))) {
         matched_word.get().word.set(word_word);
@@ -234,8 +234,8 @@ class lcl_wordle {
     abap.statements.write(new abap.types.Character(1).set(' '));
     abap.statements.write(new abap.types.Character(10).set('Word Score'));
     abap.statements.write(new abap.types.Character(48).set('------------------------------------------------'),{newLine: true});
-    for await (const unique20 of abap.statements.loop(this.matched_word_tab)) {
-      matched_word.set(unique20);
+    for await (const unique44 of abap.statements.loop(this.matched_word_tab)) {
+      matched_word.set(unique44);
       score.set(abap.operators.multiply(matched_word.get().word_score,new abap.types.Integer().set(100)));
       abap.statements.write(matched_word.get().word,{newLine: true});
       abap.statements.write(new abap.types.Character(3).set('   '));
