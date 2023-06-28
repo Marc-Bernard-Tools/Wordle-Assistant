@@ -188,7 +188,7 @@ class lcl_wordle implementation.
     temp = to_upper( i_input ).
     do strlen( temp ) times.
       if temp(1) CA c_abc.
-        r_input = r_input && temp.
+        r_input = r_input && temp(1).
       endif.
       shift temp left.
     enddo.
