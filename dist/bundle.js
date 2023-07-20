@@ -4342,7 +4342,7 @@ class Statements {
             //    this[c] = this._traceAsync(func, c, min, totals);
             //}
             //else {
-            this[c] = this._trace(func, c, min, totals);
+            //this[c] = this._trace(func, c, min, totals);
             //}
         }
     }
