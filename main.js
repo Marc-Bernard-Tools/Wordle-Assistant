@@ -1,6 +1,6 @@
 const { ABAP, MemoryConsole } = require("@abaplint/runtime")
 
-const abap = new ABAP( MemoryConsole );
+const abap = new ABAP( new MemoryConsole() );
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncFunction
 const AsyncFunction = (async function () { }).constructor;
