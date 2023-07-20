@@ -1,17 +1,17 @@
-const abaplint = require("./node_modules/@abaplint/runtime/build/src/index");
+const { ABAP, MemoryConsole } = require("@abaplint/runtime")
 
-const abap = new abaplint.ABAP();
+const abap = new ABAP( MemoryConsole );
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncFunction
 const AsyncFunction = (async function () { }).constructor;
 
 async function runABAP(letter1, letter2, letter3, letter4, letter5, black, orange) {
     try {
-        // abap.console.clear();
+        abap.console.clear();
 
         // Read ABAP from file
         const fs = require("fs");
-        let code = fs.readFileSync("abap/abap.js", "utf8");
+        let code = "abap = abapLocal;\r\n" + fs.readFileSync("abap/abap.js", "utf8");
 
         // Replace variables with input
         code = code
@@ -31,10 +31,8 @@ async function runABAP(letter1, letter2, letter3, letter4, letter5, black, orang
             .replace("$$orange_len$$", orange.length);
 
         // Ready to run
-        const js = "abap = abapLocal;\n" + code;
-
         try {
-            const f = new AsyncFunction("abapLocal", js);
+            const f = new AsyncFunction("abapLocal", code);
             await f(abap);
         } catch (e) {
             console.log("An error was thrown: " + e.toString());
