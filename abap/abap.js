@@ -1,30 +1,65 @@
 class lcl_wordle {
   static INTERNAL_TYPE = 'CLAS';
+  static INTERNAL_NAME = 'PROG-ZFOOBAR-LCL_WORDLE';
   static IMPLEMENTED_INTERFACES = [];
-  async constructor_(INPUT) {
+  static ATTRIBUTES = {"LETTER1": {"type": () => {return new abap.types.Character(26, {"qualifiedName":"lcl_wordle=>char26"});}, "visibility": "U", "is_constant": " ", "is_class": "X"},
+  "LETTER2": {"type": () => {return new abap.types.Character(26, {"qualifiedName":"lcl_wordle=>char26"});}, "visibility": "U", "is_constant": " ", "is_class": "X"},
+  "LETTER3": {"type": () => {return new abap.types.Character(26, {"qualifiedName":"lcl_wordle=>char26"});}, "visibility": "U", "is_constant": " ", "is_class": "X"},
+  "LETTER4": {"type": () => {return new abap.types.Character(26, {"qualifiedName":"lcl_wordle=>char26"});}, "visibility": "U", "is_constant": " ", "is_class": "X"},
+  "LETTER5": {"type": () => {return new abap.types.Character(26, {"qualifiedName":"lcl_wordle=>char26"});}, "visibility": "U", "is_constant": " ", "is_class": "X"},
+  "BLACK_LETTERS": {"type": () => {return new abap.types.Character(26, {"qualifiedName":"lcl_wordle=>char26"});}, "visibility": "U", "is_constant": " ", "is_class": "X"},
+  "ORANGE_LETTERS": {"type": () => {return new abap.types.Character(26, {"qualifiedName":"lcl_wordle=>char26"});}, "visibility": "U", "is_constant": " ", "is_class": "X"},
+  "WORD_TAB": {"type": () => {return abap.types.TableFactory.construct(new abap.types.String({qualifiedName: "STRING"}), {"withHeader":false,"keyType":"USER","primaryKey":{"name":"primary_key","type":"STANDARD","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>string_table");}, "visibility": "I", "is_constant": " ", "is_class": " "},
+  "LETTER_FREQUENCY_TAB": {"type": () => {return abap.types.TableFactory.construct(new abap.types.Structure({"first_letter": new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_RELATIVE_FREQUENCY"}), "other_letters": new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_RELATIVE_FREQUENCY"})}, "lcl_wordle=>ty_letter_frequency"), {"withHeader":false,"keyType":"DEFAULT","primaryKey":{"name":"primary_key","type":"STANDARD","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>ty_letter_frequency_tab");}, "visibility": "I", "is_constant": " ", "is_class": " "},
+  "REGEX_STRING": {"type": () => {return new abap.types.String({qualifiedName: "STRING"});}, "visibility": "I", "is_constant": " ", "is_class": " "},
+  "MATCHED_WORD_TAB": {"type": () => {return abap.types.TableFactory.construct(new abap.types.Structure({"word": new abap.types.Character(5, {"qualifiedName":"lcl_wordle=>char5"}), "vowel_count": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>TY_MATCHED_WORD-VOWEL_COUNT"}), "consonant_count": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>TY_MATCHED_WORD-CONSONANT_COUNT"}), "contains_all_orange_letters": new abap.types.Character(1, {"qualifiedName":"ABAP_BOOL","ddicName":"ABAP_BOOL"}), "word_score": new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_WORD_SCORE"})}, "lcl_wordle=>ty_matched_word"), {"withHeader":false,"keyType":"DEFAULT","primaryKey":{"name":"primary_key","type":"STANDARD","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>ty_matched_word_tab");}, "visibility": "I", "is_constant": " ", "is_class": " "},
+  "C_ABC": {"type": () => {return new abap.types.Character(26, {});}, "visibility": "I", "is_constant": "X", "is_class": "X"}};
+  static METHODS = {"CLEAN_INPUT": {"visibility": "I", "parameters": {"R_INPUT": {"type": () => {return new abap.types.Character(26, {"qualifiedName":"lcl_wordle=>char26"});}, "is_optional": " "}, "I_INPUT": {"type": () => {return new abap.types.String({qualifiedName: "STRING"});}, "is_optional": " "}}},
+  "BUILD_WORD_TAB_V2": {"visibility": "I", "parameters": {}},
+  "BUILD_LETTER_FREQUENCY_TAB": {"visibility": "I", "parameters": {}},
+  "BUILD_REGEX_STRING": {"visibility": "I", "parameters": {}},
+  "GET_MATCHED_WORDS": {"visibility": "I", "parameters": {}},
+  "DISPLAY_OUTPUT": {"visibility": "I", "parameters": {}},
+  "GET_VOWEL_COUNT": {"visibility": "I", "parameters": {"R_COUNT": {"type": () => {return new abap.types.Integer({qualifiedName: "I"});}, "is_optional": " "}, "I_WORD": {"type": () => {return new abap.types.Character(5, {"qualifiedName":"lcl_wordle=>char5"});}, "is_optional": " "}}},
+  "CONTAINS_ALL_ORANGE_LETTERS": {"visibility": "I", "parameters": {"R_CONTAINS_ALL_ORANGE_LETTERS": {"type": () => {return new abap.types.Character(1, {"qualifiedName":"ABAP_BOOL","ddicName":"ABAP_BOOL"});}, "is_optional": " "}, "I_WORD": {"type": () => {return new abap.types.Character(5, {"qualifiedName":"lcl_wordle=>char5"});}, "is_optional": " "}}},
+  "GET_WORD_SCORE": {"visibility": "I", "parameters": {"R_WORD_SCORE": {"type": () => {return new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_WORD_SCORE"});}, "is_optional": " "}, "I_WORD": {"type": () => {return new abap.types.Character(5, {"qualifiedName":"lcl_wordle=>char5"});}, "is_optional": " "}}},
+  "GET_LETTER_FREQUENCY": {"visibility": "I", "parameters": {"R_FREQUENCY": {"type": () => {return new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_RELATIVE_FREQUENCY"});}, "is_optional": " "}, "I_LETTER": {"type": () => {return new abap.types.Character(1, {"qualifiedName":"lcl_wordle=>char1"});}, "is_optional": " "}, "I_FIRST": {"type": () => {return new abap.types.Character(1, {"qualifiedName":"ABAP_BOOL","ddicName":"ABAP_BOOL"});}, "is_optional": " "}}},
+  "REMOVE_BLACK_LETTERS": {"visibility": "U", "parameters": {}},
+  "MAIN": {"visibility": "U", "parameters": {"I_LETTER_1": {"type": () => {return new abap.types.String({qualifiedName: "STRING"});}, "is_optional": " "}, "I_LETTER_2": {"type": () => {return new abap.types.String({qualifiedName: "STRING"});}, "is_optional": " "}, "I_LETTER_3": {"type": () => {return new abap.types.String({qualifiedName: "STRING"});}, "is_optional": " "}, "I_LETTER_4": {"type": () => {return new abap.types.String({qualifiedName: "STRING"});}, "is_optional": " "}, "I_LETTER_5": {"type": () => {return new abap.types.String({qualifiedName: "STRING"});}, "is_optional": " "}, "I_BLACK_LETTERS": {"type": () => {return new abap.types.String({qualifiedName: "STRING"});}, "is_optional": " "}, "I_ORANGE_LETTERS": {"type": () => {return new abap.types.String({qualifiedName: "STRING"});}, "is_optional": " "}}}};
+  constructor() {
     this.me = new abap.types.ABAPObject();
     this.me.set(this);
-    this.word_tab = new abap.types.Table(new abap.types.String({qualifiedName: "STRING"}), {"withHeader":false,"primaryKey":{"name":"primary_key","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>string_table");
-    this.letter_frequency_tab = new abap.types.Table(new abap.types.Structure({"first_letter": new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_RELATIVE_FREQUENCY"}), "other_letters": new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_RELATIVE_FREQUENCY"})}, "lcl_wordle=>ty_letter_frequency"), {"withHeader":false,"primaryKey":{"name":"primary_key","type":"STANDARD","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>ty_letter_frequency_tab");
+    this.letter1 = lcl_wordle.letter1;
+    this.letter2 = lcl_wordle.letter2;
+    this.letter3 = lcl_wordle.letter3;
+    this.letter4 = lcl_wordle.letter4;
+    this.letter5 = lcl_wordle.letter5;
+    this.black_letters = lcl_wordle.black_letters;
+    this.orange_letters = lcl_wordle.orange_letters;
+    this.word_tab = abap.types.TableFactory.construct(new abap.types.String({qualifiedName: "STRING"}), {"withHeader":false,"keyType":"USER","primaryKey":{"name":"primary_key","type":"STANDARD","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>string_table");
+    this.letter_frequency_tab = abap.types.TableFactory.construct(new abap.types.Structure({"first_letter": new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_RELATIVE_FREQUENCY"}), "other_letters": new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_RELATIVE_FREQUENCY"})}, "lcl_wordle=>ty_letter_frequency"), {"withHeader":false,"keyType":"DEFAULT","primaryKey":{"name":"primary_key","type":"STANDARD","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>ty_letter_frequency_tab");
     this.regex_string = new abap.types.String({qualifiedName: "STRING"});
-    this.matched_word_tab = new abap.types.Table(new abap.types.Structure({"word": new abap.types.Character(5, {"qualifiedName":"lcl_wordle=>char5"}), "vowel_count": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>TY_MATCHED_WORD-VOWEL_COUNT"}), "consonant_count": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>TY_MATCHED_WORD-CONSONANT_COUNT"}), "contains_all_orange_letters": new abap.types.Character(1, {"qualifiedName":"ABAP_BOOL","ddicName":"ABAP_BOOL"}), "word_score": new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_WORD_SCORE"})}, "lcl_wordle=>ty_matched_word"), {"withHeader":false,"primaryKey":{"name":"primary_key","type":"STANDARD","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>ty_matched_word_tab");
+    this.matched_word_tab = abap.types.TableFactory.construct(new abap.types.Structure({"word": new abap.types.Character(5, {"qualifiedName":"lcl_wordle=>char5"}), "vowel_count": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>TY_MATCHED_WORD-VOWEL_COUNT"}), "consonant_count": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>TY_MATCHED_WORD-CONSONANT_COUNT"}), "contains_all_orange_letters": new abap.types.Character(1, {"qualifiedName":"ABAP_BOOL","ddicName":"ABAP_BOOL"}), "word_score": new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_WORD_SCORE"})}, "lcl_wordle=>ty_matched_word"), {"withHeader":false,"keyType":"DEFAULT","primaryKey":{"name":"primary_key","type":"STANDARD","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>ty_matched_word_tab");
     this.c_abc = lcl_wordle.c_abc;
+  }
+  async constructor_(INPUT) {
+    if (super.constructor_) { await super.constructor_(INPUT); }
     return this;
   }
   async main(INPUT) {
-    let i_letter_1 = new abap.types.Character(26, {"qualifiedName":"lcl_wordle=>char26"});
+    let i_letter_1 = new abap.types.String({qualifiedName: "STRING"});
     if (INPUT && INPUT.i_letter_1) {i_letter_1.set(INPUT.i_letter_1);}
-    let i_letter_2 = new abap.types.Character(26, {"qualifiedName":"lcl_wordle=>char26"});
+    let i_letter_2 = new abap.types.String({qualifiedName: "STRING"});
     if (INPUT && INPUT.i_letter_2) {i_letter_2.set(INPUT.i_letter_2);}
-    let i_letter_3 = new abap.types.Character(26, {"qualifiedName":"lcl_wordle=>char26"});
+    let i_letter_3 = new abap.types.String({qualifiedName: "STRING"});
     if (INPUT && INPUT.i_letter_3) {i_letter_3.set(INPUT.i_letter_3);}
-    let i_letter_4 = new abap.types.Character(26, {"qualifiedName":"lcl_wordle=>char26"});
+    let i_letter_4 = new abap.types.String({qualifiedName: "STRING"});
     if (INPUT && INPUT.i_letter_4) {i_letter_4.set(INPUT.i_letter_4);}
-    let i_letter_5 = new abap.types.Character(26, {"qualifiedName":"lcl_wordle=>char26"});
+    let i_letter_5 = new abap.types.String({qualifiedName: "STRING"});
     if (INPUT && INPUT.i_letter_5) {i_letter_5.set(INPUT.i_letter_5);}
-    let i_black_letters = new abap.types.Character(26, {"qualifiedName":"lcl_wordle=>char26"});
+    let i_black_letters = new abap.types.String({qualifiedName: "STRING"});
     if (INPUT && INPUT.i_black_letters) {i_black_letters.set(INPUT.i_black_letters);}
-    let i_orange_letters = new abap.types.Character(26, {"qualifiedName":"lcl_wordle=>char26"});
+    let i_orange_letters = new abap.types.String({qualifiedName: "STRING"});
     if (INPUT && INPUT.i_orange_letters) {i_orange_letters.set(INPUT.i_orange_letters);}
     let inp = new abap.types.String({qualifiedName: "STRING"});
     abap.statements.write(new abap.types.Character(16).set('WORDLE ASSISTANT'),{newLine: true});
@@ -75,17 +110,17 @@ class lcl_wordle {
     await this.display_output();
   }
   async clean_input(INPUT) {
-    let r_input = new abap.types.String({qualifiedName: "STRING"});
+    let r_input = new abap.types.Character(26, {"qualifiedName":"lcl_wordle=>char26"});
     let i_input = new abap.types.String({qualifiedName: "STRING"});
     if (INPUT && INPUT.i_input) {i_input.set(INPUT.i_input);}
     let temp = new abap.types.String({qualifiedName: "STRING"});
     temp.set(abap.builtin.to_upper({val: i_input}));
     const indexBackup1 = abap.builtin.sy.get().index.get();
-    const unique1 = abap.builtin.strlen({val: temp}).get();
-    for (let unique2 = 0; unique2 < unique1; unique2++) {
-      abap.builtin.sy.get().index.set(unique2 + 1);
+    const unique41 = abap.builtin.strlen({val: temp}).get();
+    for (let unique42 = 0; unique42 < unique41; unique42++) {
+      abap.builtin.sy.get().index.set(unique42 + 1);
       if (abap.compare.ca(temp.getOffset({length: 1}), lcl_wordle.c_abc)) {
-        r_input.set(abap.operators.concat(r_input,temp));
+        r_input.set(abap.operators.concat(r_input,temp.getOffset({length: 1})));
       }
       abap.statements.shift(temp, {direction: 'LEFT'});
     }
@@ -103,11 +138,11 @@ class lcl_wordle {
       } else {
         black_letters_regex.set(new abap.types.String().set(`[${abap.templateFormatting(lcl_wordle.black_letters)}]`));
       }
-      abap.statements.replace({target: lcl_wordle.letter1, all: true, with: new abap.types.Character(0).set(''), regex: black_letters_regex});
-      abap.statements.replace({target: lcl_wordle.letter2, all: true, with: new abap.types.Character(0).set(''), regex: black_letters_regex});
-      abap.statements.replace({target: lcl_wordle.letter3, all: true, with: new abap.types.Character(0).set(''), regex: black_letters_regex});
-      abap.statements.replace({target: lcl_wordle.letter4, all: true, with: new abap.types.Character(0).set(''), regex: black_letters_regex});
-      abap.statements.replace({target: lcl_wordle.letter5, all: true, with: new abap.types.Character(0).set(''), regex: black_letters_regex});
+      abap.statements.replace({target: lcl_wordle.letter1, all: true, with: new abap.types.Character(1).set(''), regex: black_letters_regex});
+      abap.statements.replace({target: lcl_wordle.letter2, all: true, with: new abap.types.Character(1).set(''), regex: black_letters_regex});
+      abap.statements.replace({target: lcl_wordle.letter3, all: true, with: new abap.types.Character(1).set(''), regex: black_letters_regex});
+      abap.statements.replace({target: lcl_wordle.letter4, all: true, with: new abap.types.Character(1).set(''), regex: black_letters_regex});
+      abap.statements.replace({target: lcl_wordle.letter5, all: true, with: new abap.types.Character(1).set(''), regex: black_letters_regex});
     }
   }
   async build_regex_string() {
@@ -156,8 +191,8 @@ class lcl_wordle {
   async get_matched_words() {
     let matched_word = new abap.types.Structure({"word": new abap.types.Character(5, {"qualifiedName":"lcl_wordle=>char5"}), "vowel_count": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>TY_MATCHED_WORD-VOWEL_COUNT"}), "consonant_count": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>TY_MATCHED_WORD-CONSONANT_COUNT"}), "contains_all_orange_letters": new abap.types.Character(1, {"qualifiedName":"ABAP_BOOL","ddicName":"ABAP_BOOL"}), "word_score": new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_WORD_SCORE"})}, "lcl_wordle=>ty_matched_word");
     let word_word = new abap.types.String({qualifiedName: "STRING"});
-    for await (const unique3 of abap.statements.loop(this.word_tab)) {
-      word_word.set(unique3);
+    for await (const unique43 of abap.statements.loop(this.word_tab)) {
+      word_word.set(unique43);
       abap.statements.find(word_word, {regex: this.regex_string});
       if (abap.compare.eq(abap.builtin.sy.get().subrc, new abap.types.Integer().set(0))) {
         matched_word.get().word.set(word_word);
@@ -199,8 +234,8 @@ class lcl_wordle {
     abap.statements.write(new abap.types.Character(1).set(' '));
     abap.statements.write(new abap.types.Character(10).set('Word Score'));
     abap.statements.write(new abap.types.Character(48).set('------------------------------------------------'),{newLine: true});
-    for await (const unique4 of abap.statements.loop(this.matched_word_tab)) {
-      matched_word.set(unique4);
+    for await (const unique44 of abap.statements.loop(this.matched_word_tab)) {
+      matched_word.set(unique44);
       score.set(abap.operators.multiply(matched_word.get().word_score,new abap.types.Integer().set(100)));
       abap.statements.write(matched_word.get().word,{newLine: true});
       abap.statements.write(new abap.types.Character(3).set('   '));
@@ -294,13 +329,14 @@ class lcl_wordle {
   async get_letter_frequency(INPUT) {
     let r_frequency = new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_RELATIVE_FREQUENCY"});
     let i_letter = new abap.types.Character(1, {"qualifiedName":"lcl_wordle=>char1"});
-    if (INPUT && INPUT.i_letter) {i_letter = INPUT.i_letter;}
+    if (INPUT && INPUT.i_letter) {i_letter.set(INPUT.i_letter);}
     let i_first = new abap.types.Character(1, {"qualifiedName":"ABAP_BOOL","ddicName":"ABAP_BOOL"});
-    if (INPUT && INPUT.i_first) {i_first = INPUT.i_first;}
+    if (INPUT && INPUT.i_first) {i_first.set(INPUT.i_first);}
     let fs_frequency_ = new abap.types.FieldSymbol(new abap.types.Structure({"first_letter": new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_RELATIVE_FREQUENCY"}), "other_letters": new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_RELATIVE_FREQUENCY"})}, "lcl_wordle=>ty_letter_frequency"));
     let v_index = new abap.types.Integer({qualifiedName: "I"});
     v_index.set(abap.operators.add(abap.builtin.find({val: abap.builtin.sy.get().abcde, sub: i_letter}),new abap.types.Integer().set(1)));
-    abap.statements.readTable(this.letter_frequency_tab,{index: v_index,assigning: fs_frequency_});
+    abap.statements.readTable(this.letter_frequency_tab,{index: v_index,
+      assigning: fs_frequency_});
     abap.statements.assert(abap.compare.eq(abap.builtin.sy.get().subrc, new abap.types.Integer().set(0)));
     if (abap.compare.eq(i_first, abap.builtin.abap_true)) {
       r_frequency.set(fs_frequency_.get().first_letter);
@@ -410,20 +446,19 @@ lcl_wordle.char1 = new abap.types.Character(1, {"qualifiedName":"lcl_wordle=>cha
 lcl_wordle.char5 = new abap.types.Character(5, {"qualifiedName":"lcl_wordle=>char5"});
 lcl_wordle.char6 = new abap.types.Character(6, {"qualifiedName":"lcl_wordle=>char6"});
 lcl_wordle.char26 = new abap.types.Character(26, {"qualifiedName":"lcl_wordle=>char26"});
-lcl_wordle.string_table = new abap.types.Table(new abap.types.String({qualifiedName: "STRING"}), {"withHeader":false,"primaryKey":{"name":"primary_key","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>string_table");
+lcl_wordle.string_table = abap.types.TableFactory.construct(new abap.types.String({qualifiedName: "STRING"}), {"withHeader":false,"keyType":"USER","primaryKey":{"name":"primary_key","type":"STANDARD","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>string_table");
 lcl_wordle.submatch_result = new abap.types.Structure({"offset": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>SUBMATCH_RESULT-OFFSET"}), "length": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>SUBMATCH_RESULT-LENGTH"})}, "lcl_wordle=>submatch_result");
-lcl_wordle.submatch_tab = new abap.types.Table(new abap.types.Structure({"offset": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>SUBMATCH_RESULT-OFFSET"}), "length": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>SUBMATCH_RESULT-LENGTH"})}, "lcl_wordle=>submatch_result"), {"withHeader":false,"primaryKey":{"name":"primary_key","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>submatch_tab");
-lcl_wordle.match_result = new abap.types.Structure({"line": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>MATCH_RESULT-LINE"}), "offset": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>MATCH_RESULT-OFFSET"}), "length": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>MATCH_RESULT-LENGTH"}), "submatches": new abap.types.Table(new abap.types.Structure({"offset": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>SUBMATCH_RESULT-OFFSET"}), "length": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>SUBMATCH_RESULT-LENGTH"})}, "lcl_wordle=>submatch_result"), {"withHeader":false,"primaryKey":{"name":"primary_key","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>submatch_tab")}, "lcl_wordle=>match_result");
-lcl_wordle.match_result_tab = new abap.types.Table(new abap.types.Structure({"line": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>MATCH_RESULT-LINE"}), "offset": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>MATCH_RESULT-OFFSET"}), "length": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>MATCH_RESULT-LENGTH"}), "submatches": new abap.types.Table(new abap.types.Structure({"offset": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>SUBMATCH_RESULT-OFFSET"}), "length": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>SUBMATCH_RESULT-LENGTH"})}, "lcl_wordle=>submatch_result"), {"withHeader":false,"primaryKey":{"name":"primary_key","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>submatch_tab")}, "lcl_wordle=>match_result"), {"withHeader":false,"primaryKey":{"name":"primary_key","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>match_result_tab");
+lcl_wordle.submatch_tab = abap.types.TableFactory.construct(new abap.types.Structure({"offset": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>SUBMATCH_RESULT-OFFSET"}), "length": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>SUBMATCH_RESULT-LENGTH"})}, "lcl_wordle=>submatch_result"), {"withHeader":false,"keyType":"USER","primaryKey":{"name":"primary_key","type":"STANDARD","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>submatch_tab");
+lcl_wordle.match_result = new abap.types.Structure({"line": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>MATCH_RESULT-LINE"}), "offset": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>MATCH_RESULT-OFFSET"}), "length": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>MATCH_RESULT-LENGTH"}), "submatches": abap.types.TableFactory.construct(new abap.types.Structure({"offset": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>SUBMATCH_RESULT-OFFSET"}), "length": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>SUBMATCH_RESULT-LENGTH"})}, "lcl_wordle=>submatch_result"), {"withHeader":false,"keyType":"USER","primaryKey":{"name":"primary_key","type":"STANDARD","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>submatch_tab")}, "lcl_wordle=>match_result");
+lcl_wordle.match_result_tab = abap.types.TableFactory.construct(new abap.types.Structure({"line": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>MATCH_RESULT-LINE"}), "offset": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>MATCH_RESULT-OFFSET"}), "length": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>MATCH_RESULT-LENGTH"}), "submatches": abap.types.TableFactory.construct(new abap.types.Structure({"offset": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>SUBMATCH_RESULT-OFFSET"}), "length": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>SUBMATCH_RESULT-LENGTH"})}, "lcl_wordle=>submatch_result"), {"withHeader":false,"keyType":"USER","primaryKey":{"name":"primary_key","type":"STANDARD","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>submatch_tab")}, "lcl_wordle=>match_result"), {"withHeader":false,"keyType":"USER","primaryKey":{"name":"primary_key","type":"STANDARD","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>match_result_tab");
 lcl_wordle.ty_word_score = new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_WORD_SCORE"});
 lcl_wordle.ty_matched_word = new abap.types.Structure({"word": new abap.types.Character(5, {"qualifiedName":"lcl_wordle=>char5"}), "vowel_count": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>TY_MATCHED_WORD-VOWEL_COUNT"}), "consonant_count": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>TY_MATCHED_WORD-CONSONANT_COUNT"}), "contains_all_orange_letters": new abap.types.Character(1, {"qualifiedName":"ABAP_BOOL","ddicName":"ABAP_BOOL"}), "word_score": new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_WORD_SCORE"})}, "lcl_wordle=>ty_matched_word");
-lcl_wordle.ty_matched_word_tab = new abap.types.Table(new abap.types.Structure({"word": new abap.types.Character(5, {"qualifiedName":"lcl_wordle=>char5"}), "vowel_count": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>TY_MATCHED_WORD-VOWEL_COUNT"}), "consonant_count": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>TY_MATCHED_WORD-CONSONANT_COUNT"}), "contains_all_orange_letters": new abap.types.Character(1, {"qualifiedName":"ABAP_BOOL","ddicName":"ABAP_BOOL"}), "word_score": new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_WORD_SCORE"})}, "lcl_wordle=>ty_matched_word"), {"withHeader":false,"primaryKey":{"name":"primary_key","type":"STANDARD","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>ty_matched_word_tab");
+lcl_wordle.ty_matched_word_tab = abap.types.TableFactory.construct(new abap.types.Structure({"word": new abap.types.Character(5, {"qualifiedName":"lcl_wordle=>char5"}), "vowel_count": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>TY_MATCHED_WORD-VOWEL_COUNT"}), "consonant_count": new abap.types.Integer({qualifiedName: "LCL_WORDLE=>TY_MATCHED_WORD-CONSONANT_COUNT"}), "contains_all_orange_letters": new abap.types.Character(1, {"qualifiedName":"ABAP_BOOL","ddicName":"ABAP_BOOL"}), "word_score": new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_WORD_SCORE"})}, "lcl_wordle=>ty_matched_word"), {"withHeader":false,"keyType":"DEFAULT","primaryKey":{"name":"primary_key","type":"STANDARD","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>ty_matched_word_tab");
 lcl_wordle.ty_relative_frequency = new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_RELATIVE_FREQUENCY"});
 lcl_wordle.ty_letter_frequency = new abap.types.Structure({"first_letter": new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_RELATIVE_FREQUENCY"}), "other_letters": new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_RELATIVE_FREQUENCY"})}, "lcl_wordle=>ty_letter_frequency");
-lcl_wordle.ty_letter_frequency_tab = new abap.types.Table(new abap.types.Structure({"first_letter": new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_RELATIVE_FREQUENCY"}), "other_letters": new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_RELATIVE_FREQUENCY"})}, "lcl_wordle=>ty_letter_frequency"), {"withHeader":false,"primaryKey":{"name":"primary_key","type":"STANDARD","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>ty_letter_frequency_tab");
-let wordle_assistant = new abap.types.ABAPObject({qualifiedName: "LCL_WORDLE"});
+lcl_wordle.ty_letter_frequency_tab = abap.types.TableFactory.construct(new abap.types.Structure({"first_letter": new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_RELATIVE_FREQUENCY"}), "other_letters": new abap.types.Float({qualifiedName: "LCL_WORDLE=>TY_RELATIVE_FREQUENCY"})}, "lcl_wordle=>ty_letter_frequency"), {"withHeader":false,"keyType":"DEFAULT","primaryKey":{"name":"primary_key","type":"STANDARD","isUnique":false,"keyFields":[]},"secondary":[]}, "lcl_wordle=>ty_letter_frequency_tab");
+let wordle_assistant = new abap.types.ABAPObject({qualifiedName: "LCL_WORDLE", RTTIName: "\\PROGRAM=ZFOOBAR\\CLASS=LCL_WORDLE"});
 wordle_assistant.set(await (new abap.Classes['PROG-ZFOOBAR-LCL_WORDLE']()).constructor_());
-await wordle_assistant.get().main({i_letter_1: new abap.types.Character(0).set(''), i_letter_2: new abap.types.Character(0).set(''), i_letter_3: new abap.types.Character(0).set(''), i_letter_4: new abap.types.Character(0).set(''), i_letter_5: new abap.types.Character(0).set(''), i_black_letters: new abap.types.Character(0).set(''), i_orange_letters: new abap.types.Character(0).set('')});
 
 await wordle_assistant.get().main({
     i_letter_1: new abap.types.Character( $$letter1_len$$ ).set('$$letter1$$'),

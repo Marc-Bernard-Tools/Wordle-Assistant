@@ -51,13 +51,13 @@ class lcl_wordle definition.
     methods:
       main
         importing
-          i_letter_1       type char26
-          i_letter_2       type char26
-          i_letter_3       type char26
-          i_letter_4       type char26
-          i_letter_5       type char26
-          i_black_letters  type char26
-          i_orange_letters type char26.
+          i_letter_1       type string
+          i_letter_2       type string
+          i_letter_3       type string
+          i_letter_4       type string
+          i_letter_5       type string
+          i_black_letters  type string
+          i_orange_letters type string.
 
   private section.
 
@@ -94,7 +94,7 @@ class lcl_wordle definition.
       matched_word_tab     type ty_matched_word_tab.
 
     methods:
-      clean_input importing i_input type string returning value(r_input) type string,
+      clean_input importing i_input type string returning value(r_input) type char26,
       build_word_tab_v2,  "List of 5-letter words. Source: Collins Scrabble Words Dec 2021
       build_letter_frequency_tab, "Letter Frequency for English Dictionary Words
       build_regex_string,
@@ -188,7 +188,7 @@ class lcl_wordle implementation.
     temp = to_upper( i_input ).
     do strlen( temp ) times.
       if temp(1) CA c_abc.
-        r_input = r_input && temp.
+        r_input = r_input && temp(1).
       endif.
       shift temp left.
     enddo.
