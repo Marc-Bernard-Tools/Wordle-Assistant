@@ -37,9 +37,9 @@ Finally, I used [browserify](https://github.com/Marc-Bernard-Tools/Wordle-Assist
   - Edit `index.html`, `main.js`, or `abap/zwordle.abap` 
   - Transpile `zwordle.abap` into `abap/abap.js` (if ABAP has changed)
   - Add placeholders to `abap/abap.js` (see above)
-  - Bundle `npm run build`
 3. Edit `node_modules\@abaplint\runtime\build\src\statements\index.js` and remove the dependency on node built-in `util/types` (remove `const types_1 ...` and its usage)
-4. Copy `index.html`, `dist/bundle.js`, and `favicon.ico` to your host (or use GitHub pages)
+4. Bundle the app with `npm run build`
+5. Copy `index.html`, `dist/bundle.js`, and `favicon.ico` to your host (or use GitHub pages)
 
 ## Code
 
