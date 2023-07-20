@@ -27,7 +27,7 @@ To link the input from the website to the transpiled ABAP code, I added some pla
 
 When the user clicks the button or hits enter, it will [execute the Open-ABAP code and return the console output](https://github.com/Marc-Bernard-Tools/Wordle-Assistant/blob/c7559bc6f7acc7b4a56df46ee4898e7fdd6870af/main.js#L32-L45) to the HTML page.  
 
-Finally, I used [browserify](https://github.com/Marc-Bernard-Tools/Wordle-Assistant/blob/70946c35ccef70818c95f7fa8207e2163214c4c5/package.json#L8-L10) to bundle the the JS of this app and the abaplint runtime together into a [single JS file](https://github.com/Marc-Bernard-Tools/Wordle-Assistant/blob/main/dist/bundle.js) which is embedded in the [HTML page](https://github.com/Marc-Bernard-Tools/Wordle-Assistant/blob/main/index.html).
+Finally, I used [browserify](https://github.com/Marc-Bernard-Tools/Wordle-Assistant/blob/70946c35ccef70818c95f7fa8207e2163214c4c5/package.json#L8-L10) to bundle the JS of this app and the abaplint runtime together into a [single JS file](https://github.com/Marc-Bernard-Tools/Wordle-Assistant/blob/main/dist/bundle.js) which is embedded in the [HTML page](https://github.com/Marc-Bernard-Tools/Wordle-Assistant/blob/main/index.html).
 
 ## Build Yourself
 
@@ -38,7 +38,8 @@ Finally, I used [browserify](https://github.com/Marc-Bernard-Tools/Wordle-Assist
   - Transpile `zwordle.abap` into `abap/abap.js` (if ABAP has changed)
   - Add placeholders to `abap/abap.js` (see above)
   - Bundle `npm run build`
-3. Copy `index.html`, `dist/bundle.js`, and `favicon.ico` to your host (or use GitHub pages)
+3. Edit `node_modules\@abaplint\runtime\build\src\statements\index.js` and remove the dependency on node built-in `util/types` (remove `const types_1 ...` and its usage)
+4. Copy `index.html`, `dist/bundle.js`, and `favicon.ico` to your host (or use GitHub pages)
 
 ## Code
 
