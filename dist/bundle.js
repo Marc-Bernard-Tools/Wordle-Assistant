@@ -9,7 +9,7 @@ const AsyncFunction = (async function () { }).constructor;
 
 async function runABAP(letter1, letter2, letter3, letter4, letter5, black, orange) {
     try {
-        abap.console.clear();
+        // abap.console.clear();
 
         // Read ABAP from file
         
