@@ -9,7 +9,7 @@
         "build": "browserify -t brfs main.js -o dist/bundle.js"
     },
     "devDependencies": {
-        "@abaplint/runtime": "^2.7.41",
+        "@abaplint/runtime": "^2.7.128",
         "brfs": "^2.0.2",
         "browserify": "^17.0.0"
     }
