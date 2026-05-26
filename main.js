@@ -1,4 +1,5 @@
-const { ABAP, MemoryConsole } = require("@abaplint/runtime")
+import { ABAP, MemoryConsole } from "@abaplint/runtime";
+import abapCode from "abap:abap.js";
 
 const abap = new ABAP( { console: new MemoryConsole() } );
 
@@ -9,9 +10,8 @@ async function runABAP(letter1, letter2, letter3, letter4, letter5, black, orang
     try {
         abap.console.clear();
 
-        // Read ABAP from file
-        const fs = require("fs");
-        let code = "abap = abapLocal;\r\n" + fs.readFileSync("abap/abap.js", "utf8");
+        // ABAP code bundled at build time (via esbuild plugin)
+        let code = "abap = abapLocal;\r\n" + abapCode;
 
         // Replace variables with input
         code = code
@@ -47,7 +47,7 @@ async function runABAP(letter1, letter2, letter3, letter4, letter5, black, orang
     }
 }
 
-global.run = async function run() {
+window.run = async function run() {
     const app = document.getElementById("app");
     const letter1 = document.getElementById("letter1").value;
     const letter2 = document.getElementById("letter2").value;
