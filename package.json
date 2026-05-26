@@ -1,6 +1,6 @@
 {
     "name": "wordle-on-abap",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "author": {
         "name": "Marc Bernard",
         "email": "marc@marcbernardtools.com"
@@ -9,8 +9,8 @@
         "build": "browserify -t brfs main.js -o dist/bundle.js"
     },
     "devDependencies": {
-        "@abaplint/runtime": "^2.7.128",
-        "brfs": "^2.0.2",
-        "browserify": "^17.0.0"
+        "@abaplint/runtime": "2.13.26",
+        "brfs": "2.0.2",
+        "browserify": "17.0.1"
     }
 }
